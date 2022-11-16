@@ -1,0 +1,35 @@
+{
+  "name": "com.developerharon.eossharp",
+  "version": "1.0.0",
+  "displayName": "EOS Sharp",
+  "description": "An interface to connect to EOSIO blockchains",
+  "unity": "2021.3",
+  "unityRelease": "11f1",
+  "dependencies": { },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/developerharon/eos-sharp.git"
+  },
+  "keywords": [
+    "eos",
+    "eosio",
+    "leap",
+    "wax",
+    "eossharp",
+    "eos-sharp",
+    "blockchain"
+  ],
+  "author": {
+    "name": "Haron Kipkorir",
+    "email": "ronoharonkip@gmail.com",
+    "url": "https://developerharon.substack.com/"
+  },
+  "samples": [
+    {
+      "displayName": "Sample",
+      "description": "RestClient Sample",
+      "path": "Samples"
+    }
+  ]
+}
