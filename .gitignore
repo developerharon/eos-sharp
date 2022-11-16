@@ -23,3 +23,5 @@
 
 */bin/*
 /.vs/eos-sharp/v17
+/EosSharp/EosSharp.UnitTests.Core/bin
+/EosSharp/EosSharp.UnitTests.Unity3D/bin
