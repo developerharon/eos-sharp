@@ -67,6 +67,7 @@ jobs:
         git config --global user.email 'github-bot@users.noreply.github.com'
         git subtree split -P "$NUGET_ROOT" -b nuget                     # create the nuget branch
         git checkout nuget                                              # checkout the branch
+        git ls-files | grep '\.meta$' | xargs git rm                    # remove all .meta files
         git commit -am "fix: src => root"
         echo "********************** ROOT **********************"
         ls
