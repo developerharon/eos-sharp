@@ -14,8 +14,6 @@ jobs:
     - name: split upm branch
       run: |
         git branch -d upm &> /dev/null || echo upm branch not found # recreate the upm branch each time
-        git mv "$PKG_ROOT" "src/$UPM_ROOT"
-        git mv "src/$UPM_ROOT" .
         git mv LICENSE $UPM_ROOT
         git mv README.md $UPM_ROOT
         echo "********************** ROOT **********************"
@@ -26,27 +24,14 @@ jobs:
         git commit -m "create release folder"
         git subtree split -P "$UPM_ROOT" -b upm                     # create the upm branch
         git checkout upm                                            # checkout the branch
-        git rm EosSharp.sln
-        git rm EosSharp.sln.meta --ignore-unmatch
-        git rm EosSharp/EosSharp.csproj
-        git rm EosSharp/EosSharp.csproj.meta --ignore-unmatch
-        git rm EosSharp.Core/EosSharp.Core.csproj
-        git rm EosSharp.Core/EosSharp.Core.csproj.meta --ignore-unmatch
-        git rm EosSharp.UnitTests/EosSharp.UnitTests.csproj
-        git rm EosSharp.UnitTests/EosSharp.UnitTests.csproj.meta --ignore-unmatch
-        git rm EosSharp.UnitTests.Core/EosSharp.UnitTests.Core.csproj
-        git rm EosSharp.UnitTests.Core/EosSharp.UnitTests.Core.csproj.meta --ignore-unmatch
-        git rm EosSharp.UnitTests.Unity3D/EosSharp.UnitTests.Unity3D.csproj
-        git rm EosSharp.UnitTests.Unity3D/EosSharp.UnitTests.Unity3D.csproj.meta --ignore-unmatch
-        git rm EosSharp.Unity3D/EosSharp.Unity3D.csproj
-        git rm EosSharp.Unity3D/EosSharp.Unity3D.csproj.meta --ignore-unmatch
+        git ls-files | grep '\.csproj$' | xargs git rm                    # remove all .csproj files
+        git ls-files | grep '\.csproj.meta$' | xargs git rm                    # remove all .csproj.meta files
         git commit -am "fix: src => root"
         echo "********************** ROOT **********************"
         ls
         git push -u origin upm --force                              # commit the branch
       env:
-        PKG_ROOT: EosSharp
-        UPM_ROOT: Release
+        UPM_ROOT: EosSharp
         
   split-nuget:
     name: split nuget branch
