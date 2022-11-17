@@ -71,4 +71,4 @@ jobs:
         ls
         git push -u origin nuget --force                                # commit the branch
       env:
-        NUGET_ROOT: .
+        NUGET_ROOT: src
